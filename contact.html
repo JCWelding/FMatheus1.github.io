@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Welding Company</title>
+    <style>
+        /* CSS styles go here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        nav {
+            background-color: #444;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        .content {
+            margin-bottom: 20px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welding Company</h1>
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="container">
+        <div class="content">
+            <h2>Contact </h2>
+            <p>Have a question or need a quote? Contact us using the form below:</p>
+            <h2>Submit Form</h2>
+            <!-- Input fields and button to trigger the saveData function -->
+            <label for="nameField">Enter your name:</label>
+            <input type="text" id="nameField"><br>
+            <label for="emailField">Enter your email:</label>
+            <input type="email" id="emailField"><br>
+            <label for="messageField">Enter your message:</label>
+            <textarea id="messageField"></textarea><br>
+            <button onclick="storeFormData()">Send</button>
+            <p id="displayData"></p>
+
+            <script>
+                function storeFormData() {
+                    var name = document.getElementById("nameField").value;
+                    var email = document.getElementById("emailField").value;
+                    var message = document.getElementById("messageField").value;
+
+                    localStorage.setItem("userName", name);
+                    localStorage.setItem("userEmail", email);
+                    localStorage.setItem("userMessage", message);
+
+                    document.getElementById("displayData").textContent = "Data saved.";
+                }
+
+                // Load and display the stored values when the page loads
+                window.onload = function() {
+                    const storedName = localStorage.getItem('userName');
+                    const storedEmail = localStorage.getItem('userEmail');
+                    const storedMessage = localStorage.getItem('userMessage');
+
+                    if (storedName) {
+                        document.getElementById('nameField').value = storedName;
+                    }
+                    if (storedEmail) {
+                        document.getElementById('emailField').value = storedEmail;
+                    }
+                    if (storedMessage) {
+                        document.getElementById('messageField').value = storedMessage;
+                    }
+                };
+            </script>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Welding Company. All rights reserved.</p>
+    </footer>
+</body>
+</html>

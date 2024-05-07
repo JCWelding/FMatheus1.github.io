@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Company Name</title>
+    <title>Your Title Here</title>
     <style>
-        /* CSS styles go here */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -53,7 +51,7 @@
             bottom: 10px;
             width: 100px;
             height: 40px;
-            background-color: #0000;
+            background-color: rgba(0, 0, 0, 0);
             border: none;
             color: transparent;
             text-indent: 100%;
@@ -63,37 +61,16 @@
     </style>
 </head>
 <body>
-    <header>
-        <h1>Company Name</h1>
-    </header>
     <nav>
         <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="services.html">Services</a>
-        <a href="contact.html">Contact</a>
     </nav>
-    <div class="container">
-        <div class="content">
-            <h2>About Us</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae sem ac nisi vehicula ultricies.</p>
-        </div>
-        <div class="content">
-            <h2>Our Services</h2>
-            <ul>
-                <li>Service 1</li>
-                <li>Service 2</li>
-                <li>Service 3</li>
-            </ul>
-        </div>
-        <div class="content">
-            <h2>Contact Us</h2>
-            <p>Email: JakeBoldle@icloud.com</p>
-            <p>Phone: 123-456-7890</p>
-        </div>
-    </div>
-    <footer>
-        <p>&copy; 2024 Company Name. All rights reserved.</p>
-    </footer>
-    <a href="formpage.html" class="invisible-button">Go to Other Page</a>
+
+    <h2>Submitted Information:</h2>
+    <p><strong>Name:</strong> <span id="submittedName"></span></p>
+    <p><strong>Email:</strong> <span id="submittedEmail"></span></p>
+    <p><strong>Message:</strong> <span id="submittedMessage"></span></p>
+
+    <!-- Include the script.js file -->
+    <script src="script.js"></script>
 </body>
 </html>
