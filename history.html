@@ -2,7 +2,7 @@
 <html>
 <head>
     <!-- Include the script.js file -->
-    <script src="script.js"></script>
+    <script src="script2.js"></script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,7 +42,7 @@
         }
 
         .text{    
-            color: green;
+            color: red;
         }
 
         footer {
@@ -74,12 +74,19 @@
         <a href="index.html">Home</a>
         <a href="contact.html">Back To Contact</a>
         <a href="history.html">History</a>
+        <a href="formpage.html">Form Page</a>
     </nav>
-    <div class="text">
-        <h2>All Submitted Information:</h2>
-        <div id="allEntries"></div>
-    </div>
+
+    <h1>History Entries</h1>
+    <div id="historyEntries"></div>
+    <script src="history.js"></script>
+
     <!-- Include the script.js file -->
-    <script src="script.js"></script>
+    <script src="script2.js"></script>
+
 </body>
+<footer>
+    <button id="deleteHistoryButton">Delete History</button>
+</footer>
+
 </html>

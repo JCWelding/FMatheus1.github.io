@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Include the script.js file -->
+    <script src="script.js"></script>
+    <script src="script2.js"></script>
+
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,36 +42,11 @@
         }
         .content {
             margin-bottom: 20px;
-            width: 1000px;
-            height: 50px;
-            margin-right: 200px;
-            margin-left: 200px; 
         }
 
-        .qu {
-            margin-bottom: 20px;
-            width: 1000px;
-            height: 50px;
-            margin-right: 25px;
-             
+        .text {    
+            color: green;
         }
-
-        .qu2 {
-            margin-bottom: 20px;
-            width: 1000px;
-            height: 50px;
-            margin-right: 27px;
-             
-        }
-
-        .qu3 {
-            margin-bottom: 20px;
-            width: 1000px;
-            height: 50px;
-            margin-right: 20px;
-             
-        }
-
 
         footer {
             background-color: #333;
@@ -76,6 +56,19 @@
             position: fixed;
             bottom: 0;
             width: 100%;
+        }
+        .invisible-button {
+            position: fixed;
+            left: 10px;
+            bottom: 10px;
+            width: 100px;
+            height: 40px;
+            background-color: rgba(0, 0, 0, 0);
+            border: none;
+            color: transparent;
+            text-indent: 100%;
+            white-space: nowrap;
+            overflow: hidden;
         }
     </style>
 </head>
@@ -111,9 +104,12 @@
                     var email = document.getElementById("emailField").value;
                     var message = document.getElementById("messageField").value;
 
-                    localStorage.setItem("userName", name);
-                    localStorage.setItem("userEmail", email);
-                    localStorage.setItem("userMessage", message);
+                    var entry = "Name: " + name + ", Email: " + email + ", Message: " + message;
+
+                    // Generate a unique key for each entry
+                    var key = "userEntry" + localStorage.length;
+
+                    localStorage.setItem(key, entry);
 
                     document.getElementById("displayData").textContent = "Data saved.";
 
@@ -121,23 +117,30 @@
                     document.getElementById("nameField").value = "";
                     document.getElementById("emailField").value = "";
                     document.getElementById("messageField").value = "";
+
+                    // Display all entries
+                    displayAllEntries();
                 }
 
-                // Load and display the stored values when the page loads
-                window.onload = function() {
-                    const storedName = localStorage.getItem('userName');
-                    const storedEmail = localStorage.getItem('userEmail');
-                    const storedMessage = localStorage.getItem('userMessage');
+                // Function to display all stored entries
+                function displayAllEntries() {
+                    var allEntriesDiv = document.getElementById('allEntries');
+                    allEntriesDiv.innerHTML = ''; // Clear the previous entries
 
-                    if (storedName) {
-                        document.getElementById('nameField').value = storedName;
+                    for (var i = 0; i < localStorage.length; i++) {
+                        var key = localStorage.key(i);
+                        if (key.startsWith('userEntry')) {
+                            var entry = localStorage.getItem(key);
+                            var entryElement = document.createElement('p');
+                            entryElement.textContent = entry;
+                            allEntriesDiv.appendChild(entryElement);
+                        }
                     }
-                    if (storedEmail) {
-                        document.getElementById('emailField').value = storedEmail;
-                    }
-                    if (storedMessage) {
-                        document.getElementById('messageField').value = storedMessage;
-                    }
+                }
+
+                // Load and display all stored entries when the page loads
+                window.onload = function() {
+                    displayAllEntries();
                 };
             </script>
         </div>
@@ -145,5 +148,6 @@
     <footer>
         <p>&copy; 2024 Welding Company. All rights reserved.</p>
     </footer>
+    <a href="formpage.html" class="invisible-button">Go to Other Page</a>
 </body>
 </html>

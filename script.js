@@ -1,29 +1,73 @@
-function saveData() {
-    const inputField = document.getElementById('inputField');
-    const inputValue = inputField.value;
+// Function to remove an entry from the form page and move it to the history page
+function removeEntry(key) {
+    var entry = localStorage.getItem(key);
+    var historyEntries = JSON.parse(localStorage.getItem('historyEntries')) || [];
+    historyEntries.push(entry);
+    localStorage.setItem('historyEntries', JSON.stringify(historyEntries));
 
-    // Store the input value in local storage
-    localStorage.setItem('userInput', inputValue);
-
-    // Display the stored value
-    document.getElementById('displayData').textContent = `Stored value: ${inputValue}`;
+    var label = document.querySelector('label[for="' + key + '"]');
+    label.style.display = 'none';
 }
 
-// Load and display the stored value when the page loads
-// Load and display the stored values when the page loads
+// Function to store form data
+function storeFormData() {
+    var name = document.getElementById("nameField").value;
+    var email = document.getElementById("emailField").value;
+    var message = document.getElementById("messageField").value;
+
+    var entry = "Name: " + name + ",\n Email: " + email + ", Message: " + message;
+
+    // Generate a unique key for each entry
+    var key = "userEntry" + localStorage.length;
+
+    localStorage.setItem(key, entry);
+
+    document.getElementById("displayData").textContent = "Data saved.";
+
+    // Clear the input fields after storing the data
+    document.getElementById("nameField").value = "";
+    document.getElementById("emailField").value = "";
+    document.getElementById("messageField").value = "";
+
+    // Display all entries
+    displayAllEntries();
+}
+
+// Function to display all stored entries
+function displayAllEntries() {
+    var allEntriesDiv = document.getElementById('allEntries');
+    allEntriesDiv.innerHTML = ''; // Clear the previous entries
+
+    for (var i = 0; i < localStorage.length; i++) {
+        var key = localStorage.key(i);
+        if (key.startsWith('userEntry')) {
+            var entry = localStorage.getItem(key);
+            // Replace commas with commas followed by a line break
+            var formattedEntry = entry.replace(/, /g, ', ');
+
+            // Create a checkbox
+            var checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.value = key;
+            checkbox.onclick = function() {
+                removeEntry(this.value);
+            };
+
+            // Create a label for the checkbox
+            var label = document.createElement('label');
+            label.htmlFor = key;
+            label.style.fontSize = '30px'; // Set the font size to 20 pixels
+            label.appendChild(checkbox);
+            label.appendChild(document.createTextNode(formattedEntry));
+
+            var entryElement = document.createElement('div');
+            entryElement.appendChild(label);
+            allEntriesDiv.appendChild(entryElement);
+        }
+    }
+}
+
+// Load and display all stored entries when the page loads
 window.onload = function() {
-    const storedName = localStorage.getItem('userName');
-    const storedEmail = localStorage.getItem('userEmail');
-    const storedMessage = localStorage.getItem('userMessage');
-
-    if (storedName) {
-        document.getElementById('submittedName').innerText = storedName;
-    }
-    if (storedEmail) {
-        document.getElementById('submittedEmail').innerText = storedEmail;
-    }
-    if (storedMessage) {
-        document.getElementById('submittedMessage').innerText = storedMessage;
-    }
+    displayAllEntries();
 };
-
