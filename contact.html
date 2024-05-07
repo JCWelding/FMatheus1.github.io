@@ -37,7 +37,37 @@
         }
         .content {
             margin-bottom: 20px;
+            width: 1000px;
+            height: 50px;
+            margin-right: 200px;
+            margin-left: 200px; 
         }
+
+        .qu {
+            margin-bottom: 20px;
+            width: 1000px;
+            height: 50px;
+            margin-right: 25px;
+             
+        }
+
+        .qu2 {
+            margin-bottom: 20px;
+            width: 1000px;
+            height: 50px;
+            margin-right: 27px;
+             
+        }
+
+        .qu3 {
+            margin-bottom: 20px;
+            width: 1000px;
+            height: 50px;
+            margin-right: 20px;
+             
+        }
+
+
         footer {
             background-color: #333;
             color: white;
@@ -65,13 +95,13 @@
             <h2>Contact </h2>
             <p>Have a question or need a quote? Contact us using the form below:</p>
             <h2>Submit Form</h2>
-            <!-- Input fields and button to trigger the saveData function -->
-            <label for="nameField">Enter your name:</label>
-            <input type="text" id="nameField"><br>
-            <label for="emailField">Enter your email:</label>
-            <input type="email" id="emailField"><br>
-            <label for="messageField">Enter your message:</label>
-            <textarea id="messageField"></textarea><br>
+            <!-- Input fields and button to trigger the storeFormData function -->
+            <label class="qu" for="nameField">Enter your name:</label>
+            <input type="text" id="nameField"><br><br>
+            <label class="qu2" for="emailField">Enter your email:</label>
+            <input type="email" id="emailField"><br><br>
+            <label class="qu3" for="messageField">Enter your message:</label>
+            <textarea id="messageField" style="width: 300px; height: 100px;"></textarea><br><br>
             <button onclick="storeFormData()">Send</button>
             <p id="displayData"></p>
 
@@ -86,6 +116,11 @@
                     localStorage.setItem("userMessage", message);
 
                     document.getElementById("displayData").textContent = "Data saved.";
+
+                    // Clear the input fields after storing the data
+                    document.getElementById("nameField").value = "";
+                    document.getElementById("emailField").value = "";
+                    document.getElementById("messageField").value = "";
                 }
 
                 // Load and display the stored values when the page loads
