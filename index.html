@@ -15,7 +15,7 @@
         }
         header {
             background-color: #ab0000;
-            color: rgb(111, 110, 110);
+            color: rgb(184, 184, 184);
             padding: 10px 20px;
             text-align: center;
         }
@@ -60,6 +60,18 @@
             white-space: nowrap;
             overflow: hidden;
         }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
     </style>
 </head>
 <body>
@@ -68,28 +80,51 @@
     </header>
     <nav>
         <a href="index.html">Home</a>
-        <a href="about.html">About</a>
         <a href="services.html">Services</a>
         <a href="contact.html">Contact</a>
     </nav>
     <div class="container">
         <div class="content">
-            <h2>About Us</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae sem ac nisi vehicula ultricies.</p>
+            <h2>About Me</h2>
+            <p>Hello, my name is Jake Bodle, and I am the proud owner and operator of JC Welding Co. 
+                Despite being a small company, I am committed to delivering top-quality welding services.
+                 Currently, I am a high school student with ambitious dreams of becoming a pilot. To achieve my goals, 
+                 I offer my expertise in welding to the community.<br><br>
+                
+                Do you require strong, reliable welds that can withstand pressure? Look no further! I provide
+                 high-quality services at competitive rates. While my prices are affordable, I ensure that each 
+                 project meets a high standard of excellence. Down below are just a few of my many offered services Every great journey starts with a single step, and
+                  I am dedicated to proving my worth in the welding industry.<br><br>
+                
+                If you have any questions or welding needs, please do not hesitate to contact me.
+                 Your satisfaction is my priority, and I am here to assist you with your welding projects.</p>
         </div>
         <div class="content">
             <h2>Our Services</h2>
-            <ul>
-                <li>Service 1</li>
-                <li>Service 2</li>
-                <li>Service 3</li>
-            </ul>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Custom Metal Fabrication</td>
+                        <td>$50 per hour</td>
+                    </tr>
+                    <tr>
+                        <td>Structural Welding</td>
+                        <td>$60 per hour</td>
+                    </tr>
+                    <tr>
+                        <td>Aluminum Welding</td>
+                        <td>$70 per hour</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <div class="content">
-            <h2>Contact Us</h2>
-            <p>Email: JakeBoldle@icloud.com</p>
-            <p>Phone: 123-456-7890</p>
-        </div>
+        
     </div>
     <footer>
         <p>&copy; 2024 Company Name. All rights reserved.</p>

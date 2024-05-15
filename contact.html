@@ -5,13 +5,7 @@
     <script src="script.js"></script>
     <script src="script2.js"></script>
 
-
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Welding Company</title>
     <style>
-        /* CSS styles go here */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -19,8 +13,8 @@
             box-sizing: border-box;
         }
         header {
-            background-color: #333;
-            color: white;
+            background-color: #ab0000;
+            color: rgb(184, 184, 184);
             padding: 10px 20px;
             text-align: center;
         }
@@ -48,6 +42,9 @@
             color: green;
         }
 
+        .qu3 {
+            text-align: center;
+        }
         footer {
             background-color: #333;
             color: white;
@@ -70,7 +67,36 @@
             white-space: nowrap;
             overflow: hidden;
         }
+        textarea{
+            width: 300px;
+            height: 100px;
+        }
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+            justify-content: center;
+            align-items: center;
+        }
+        .overlay-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
     </style>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Welding Company</title>
+
 </head>
 <body>
     <header>
@@ -78,7 +104,6 @@
     </header>
     <nav>
         <a href="index.html">Home</a>
-        <a href="about.html">About</a>
         <a href="services.html">Services</a>
         <a href="contact.html">Contact</a>
     </nav>
@@ -90,64 +115,63 @@
             <h2>Submit Form</h2>
             <!-- Input fields and button to trigger the storeFormData function -->
             <label class="qu" for="nameField">Enter your name:</label>
-            <input type="text" id="nameField"><br><br>
-            <label class="qu2" for="emailField">Enter your email:</label>
-            <input type="email" id="emailField"><br><br>
-            <label class="qu3" for="messageField">Enter your message:</label>
-            <textarea id="messageField" style="width: 300px; height: 100px;"></textarea><br><br>
+            <input type="text" id="nameField" required><br><br>
+            <label class="qu2" for="emailField">Enter your Email or Phone Number:</label>
+            <input type="email" id="emailField" required><br><br>
+            <label class="qu3" for="messageField">Write a message:</label><br>
+            <textarea id="messageField" required ></textarea><br><br>
+
             <button onclick="storeFormData()">Send</button>
             <p id="displayData"></p>
-
-            <script>
-                function storeFormData() {
-                    var name = document.getElementById("nameField").value;
-                    var email = document.getElementById("emailField").value;
-                    var message = document.getElementById("messageField").value;
-
-                    var entry = "Name: " + name + ", Email: " + email + ", Message: " + message;
-
-                    // Generate a unique key for each entry
-                    var key = "userEntry" + localStorage.length;
-
-                    localStorage.setItem(key, entry);
-
-                    document.getElementById("displayData").textContent = "Data saved.";
-
-                    // Clear the input fields after storing the data
-                    document.getElementById("nameField").value = "";
-                    document.getElementById("emailField").value = "";
-                    document.getElementById("messageField").value = "";
-
-                    // Display all entries
-                    displayAllEntries();
-                }
-
-                // Function to display all stored entries
-                function displayAllEntries() {
-                    var allEntriesDiv = document.getElementById('allEntries');
-                    allEntriesDiv.innerHTML = ''; // Clear the previous entries
-
-                    for (var i = 0; i < localStorage.length; i++) {
-                        var key = localStorage.key(i);
-                        if (key.startsWith('userEntry')) {
-                            var entry = localStorage.getItem(key);
-                            var entryElement = document.createElement('p');
-                            entryElement.textContent = entry;
-                            allEntriesDiv.appendChild(entryElement);
-                        }
-                    }
-                }
-
-                // Load and display all stored entries when the page loads
-                window.onload = function() {
-                    displayAllEntries();
-                };
-            </script>
         </div>
     </div>
+
     <footer>
         <p>&copy; 2024 Welding Company. All rights reserved.</p>
     </footer>
-    <a href="formpage.html" class="invisible-button">Go to Other Page</a>
+
+    <!-- Login form and overlay -->
+    <div id="loginOverlay" class="overlay">
+        <div class="overlay-content">
+            <h1>Login</h1>
+            <form action="formpage.html" method="POST" onsubmit="return validateCredentials()">
+                <!-- <label for="username">Username:</label><br>
+                <input type="text" name="username" id="username" required><br> -->
+                <label for="password">Password:</label><br>
+                <input type="password" name="password" id="password" required><br>
+                <input type="submit" value="Login">
+            </form>
+            <a href="formpage.html" class="invisible-button">Go to Other Page</a>
+        </div>
+    </div>
+
+    <a href="#" class="invisible-button" onclick="showLogin()">Login</a>
+
+    <script>
+        function showLogin() {
+            document.getElementById('loginOverlay').style.display = 'flex';
+        }
+
+        function hideLogin() {
+            document.getElementById('loginOverlay').style.display = 'none';
+        }
+
+        function validateCredentials() {
+            //var usernameInput = document.getElementById('username').value; 
+            var passwordInput = document.getElementById('password').value;
+
+            // Check if the username and password are correct
+            if (usernameInput === 'FMatheus1' && passwordInput === 'FjM1211-') {
+                hideLogin(); // Hide the login form if credentials are correct
+                return true; // Allow form submission
+            elif; (usernameInput === 'FMatheus1' && passwordInput === 'Jake') 
+                hideLogin(); // Hide the login form if credentials are correct
+                return true; // Allow form submission
+            } elif; {
+                alert('Incorrect username or password. Please try again.');
+                return false; // Prevent form submission
+            }
+        }
+    </script>
 </body>
 </html>

@@ -15,7 +15,8 @@ function storeFormData() {
     var email = document.getElementById("emailField").value;
     var message = document.getElementById("messageField").value;
 
-    var entry = "Name: " + name + ",\n Email: " + email + ", Message: " + message;
+    // Construct the entry string with line breaks
+    var entry = "Name: " + name + ",<br>Email: " + email + ",<br>Message: " + message;
 
     // Generate a unique key for each entry
     var key = "userEntry" + localStorage.length;
@@ -33,6 +34,9 @@ function storeFormData() {
     displayAllEntries();
 }
 
+
+
+
 // Function to display all stored entries
 function displayAllEntries() {
     var allEntriesDiv = document.getElementById('allEntries');
@@ -43,7 +47,7 @@ function displayAllEntries() {
         if (key.startsWith('userEntry')) {
             var entry = localStorage.getItem(key);
             // Replace commas with commas followed by a line break
-            var formattedEntry = entry.replace(/, /g, ', ');
+            var formattedEntry = entry.replace(/, /g, ' ');
 
             // Create a checkbox
             var checkbox = document.createElement('input');
