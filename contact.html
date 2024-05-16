@@ -132,48 +132,7 @@
         <p>&copy; 2024 Welding Company. All rights reserved.</p>
     </footer>
 
-    <!-- Login form and overlay -->
-    <div id="loginOverlay" class="overlay">
-        <div class="overlay-content">
-            <h1>Login</h1>
-            <form action="formpage.html" method="POST" onsubmit="return validateCredentials()">
-                <!-- <label for="username">Username:</label><br>
-                <input type="text" name="username" id="username" required><br> -->
-                <label for="password">Password:</label><br>
-                <input type="password" name="password" id="password" required><br>
-                <input type="submit" value="Login">
-            </form>
-            <a href="formpage.html" class="invisible-button">Go to Other Page</a>
-        </div>
-    </div>
-
-    <a href="#" class="invisible-button" onclick="showLogin()">Login</a>
-
-    <script>
-        function showLogin() {
-            document.getElementById('loginOverlay').style.display = 'flex';
-        }
-
-        function hideLogin() {
-            document.getElementById('loginOverlay').style.display = 'none';
-        }
-
-        function validateCredentials() {
-            //var usernameInput = document.getElementById('username').value; 
-            var passwordInput = document.getElementById('password').value;
-
-            // Check if the username and password are correct
-            if (usernameInput === 'FMatheus1' && passwordInput === 'FjM1211-') {
-                hideLogin(); // Hide the login form if credentials are correct
-                return true; // Allow form submission
-            elif; (usernameInput === 'FMatheus1' && passwordInput === 'Jake') 
-                hideLogin(); // Hide the login form if credentials are correct
-                return true; // Allow form submission
-            } elif; {
-                alert('Incorrect username or password. Please try again.');
-                return false; // Prevent form submission
-            }
-        }
-    </script>
+    
+    
 </body>
 </html>
