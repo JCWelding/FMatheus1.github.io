@@ -4,7 +4,7 @@ function displayHistoryEntries() {
     var historyEntriesDiv = document.getElementById('historyEntries');
     historyEntriesDiv.innerHTML = ''; // Clear the previous entries
 
-    fetch('http://3.139.99.98:8080/submissions').then(d => d.json().then(j => {
+    fetch('https://api.jcwelding.titanschedule.com:8080/submissions').then(d => d.json().then(j => {
         if(j.message !== 'FAIL') {
             const historyEntries = j.content;
 
