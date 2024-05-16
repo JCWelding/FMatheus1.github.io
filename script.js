@@ -14,7 +14,7 @@ function storeFormData() {
 
     // API
 
-    fetch('http://3.139.99.98:8080/formsubmit', {
+    fetch('https://api.jcwelding.titanschedule.com:8080/formsubmit', {
         method: 'POST',
         body: JSON.stringify({
             name,
